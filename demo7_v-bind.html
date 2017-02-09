@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo7</title>
+    <link rel="stylesheet" href="style/style1.css">
+</head>
+<body>
+<div id="app">
+    <ul class="pagination">
+        <li v-for="i in pageCount">
+            <!-- i 默认从 1 开始， vue1 从 0 开始-->
+            <a href="javascripit:void(0)" v-bind:class="activeNum === (i) ? 'active' : ''">{{i}}</a>
+            <!-- v-bind 设置 标签里的属性 如：class, id... -->
+        </li>
+    </ul>
+</div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            activeNum: 1,
+            pageCount: 10
+        }
+    })
+</script>
+</html>

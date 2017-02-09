@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo6</title>
+    <link rel="stylesheet" href="style/style1.css"/>
+</head>
+<body>
+<table id="tab">
+    <tr>
+        <th>name</th>
+        <th>sex</th>
+        <th>age</th>
+    </tr>
+    <tr v-for="p in people">
+        <td>{{p.name}}</td>
+        <td>{{p.age}}</td>
+        <td>{{p.sex}}</td>
+    </tr>
+</table>
+</body>
+<script src="js/vue.js"></script>
+<script>
+    new Vue({
+        el: '#tab',
+        data: {
+            people: [{
+                name: 'Java',
+                age: 20,
+                sex: 'man'
+            }, {
+                name: 'C++',
+                age: 22,
+                sex: 'woman'
+            }, {
+                name: 'Vue',
+                age: 11,
+                sex: 'man'
+            }]
+        }
+    })
+</script>
+</html>

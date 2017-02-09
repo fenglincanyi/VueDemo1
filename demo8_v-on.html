@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo8</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="msg"/>
+        <br>
+        <button v-on:click="greet">Greet</button>
+        <br>
+        <button v-on:click="say('你好啊')">Hi</button>
+    </div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            msg: "测试测试"
+        },
+        methods:{
+            greet: function () {
+                alert(this.msg)
+            },
+            say: function (msg) {
+                alert(msg)
+            }
+        }
+    })
+</script>
+</html>
