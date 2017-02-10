@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo12</title>
+</head>
+<body>
+<div id="app">
+    <parent-component></parent-component>
+
+    <!-- 子组件单独在父组件内使用，子组件不生效 -->
+    <!--<parent-component>-->
+        <!--<child-component></child-component>-->
+    <!--</parent-component>-->
+
+    <!--
+        父组件外使用 子组件：报错，
+    [Vue warn]: Unknown custom element: <child-component> - did you register the component correctly? For recursive components, make sure to provide the "name" option.-->
+    <!--(found in root instance)-->
+
+    <!--<parent-component>-->
+    <!--</parent-component>-->
+    <!--<child-component></child-component>-->
+
+    <test-component></test-component>
+</div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+    var childComponent = Vue.extend({
+        template: "<div>child component</div>"
+    });
+
+    var parentComponent = Vue.extend({
+        // 父组件使用 子组件
+        template: "<div>parent component<br> <child-component></child-component> </div>",
+        // 局部注册 子组件
+        components :{
+            'child-component': childComponent
+        }
+    });
+
+    Vue.component('parent-component', parentComponent);
+
+
+    // 快捷方法，创建并注册组件
+    Vue.component('test-component', {
+        template: '<div> test create and regisiter component</div>'
+    });
+
+
+    new Vue({
+        el:'#app'
+    })
+</script>
+</html>

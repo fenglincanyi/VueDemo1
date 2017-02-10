@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo10</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 使用 扩展的组件-->
+        <my-component></my-component>
+    </div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+    // 扩展自己的新组建
+    var myComponent = Vue.extend({
+        template: '<div>hello Component</div>'
+    });
+
+    // 注册该组件，制定标签名
+    Vue.component('my-component', myComponent);
+
+    new Vue({
+        el:'#app'
+    })
+</script>
+</html>

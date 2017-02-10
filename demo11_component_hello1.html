@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo11</title>
+</head>
+<body>
+<div id="app1">
+    <my-component1></my-component1>
+</div>
+<div id="app2">
+    <my-component2></my-component2>
+</div>
+
+<div id="app3">
+    <my-component3></my-component3>
+</div>
+
+    <!-- 不在 绑定的 id范围内，自定义的组件不能扩展-->
+    <my-component1></my-component1>
+
+
+
+</body>
+<script src="js/vue.js"></script>
+<script>
+    var myComponent1 = Vue.extend({
+        template: "<div>myComponent1</div>"
+    });
+    var myComponent2 = Vue.extend({
+        template: "<div>myComponent2</div>"
+    });
+    var myComponent3 = Vue.extend({
+        template: "<div>myComponent3</div>"
+    });
+
+    // 全局注册
+    Vue.component("my-component1", myComponent1);
+    Vue.component("my-component2", myComponent2);
+
+    new Vue({
+        el:'#app1'
+    });
+
+    new Vue({
+        el: '#app2'
+    });
+
+    new Vue({
+        el: '#app3',
+        // 局部注册, 只能用于当前绑定的 html 标签下
+        components:{
+            'my-component3': myComponent3
+        }
+    })
+</script>
+</html>
