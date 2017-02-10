@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo13</title>
+</head>
+<body>
+<div id="app">
+    <my-component></my-component>
+</div>
+
+<!-- 方式1： text/x-template 标识内容不是 js-->
+<!--<script type="text/x-template" id="myComponent">-->
+<!--<div>my-component script test</div>-->
+<!--</script>-->
+
+<!--方式2： 使用 <template> 实现，不需要 type -->
+<template id="myComponent">
+    <div>my-component script test2</div>
+</template>
+
+<!--在Vue.js中，可创建.vue后缀的文件，在.vue文件中定义组件-->
+
+</body>
+<script src="js/vue.js"></script>
+<script>
+    // 创建并注册组件
+    Vue.component('my-component', {
+        template: '#myComponent'
+    });
+    new Vue({
+        el: '#app'
+    })
+</script>
+</html>

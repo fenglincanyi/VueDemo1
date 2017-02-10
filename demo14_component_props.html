@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo14</title>
+    <link rel="stylesheet" href="style/style1.css">
+</head>
+<body>
+
+<div id="app">
+    <!-- 驼峰myName 变 my-name 两者对应
+         属性值与 data 里的属性名相同
+    -->
+    <my-component v-bind:my-name="name" v-bind:my-age="age"></my-component>
+</div>
+
+<template id="myComponent">
+    <table>
+        <tr>
+            <th colspan="2">
+                子组件数据
+            </th>
+        </tr>
+        <tr>
+            <td>my name</td>
+            <td>{{ myName }}</td>
+        </tr>
+        <tr>
+            <td>my age</td>
+            <td>{{ myAge }}</td>
+        </tr>
+    </table>
+</template>
+
+</body>
+<script src="js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            name: 'geng',
+            age: 23
+        },
+        components: {
+            'my-component': {
+                template: '#myComponent',
+                props: ['myName', 'myAge']
+                // 组件实例的作用域是孤立的，子组件并不能直接使用父组件的数据，要通过props传给子组件
+            }
+        }
+    })
+</script>
+</html>
