@@ -1,0 +1,42 @@
+.container {
+    width: 500px;
+    height: auto;
+    padding-bottom: 50px;
+    background-color: beige;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.input {
+    display: flex;
+    width: 300px;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.buttons {
+    width: 320px;
+    display: flex;
+    margin-top: 20px;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.message {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.resultList {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+}
+
+.resultItem {
+    font-size: 22px;
+    color: cornflowerblue;
+}

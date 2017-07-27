@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>todo list demo</title>
+    <link rel="stylesheet" href="common.css">
+</head>
+<body>
+<div class="container" id="main">
+    <h2>任务计划表</h2>
+    <div class="input">
+        <input style="width: 200px" type="text" v-model="addContent"/>
+        <button @click="addTask">添加任务</button>
+    </div>
+    <div class="buttons">
+        <button @click="showAllTask">查看所有任务</button>
+        <button @click="showUnfinishedTask">查看未完成任务</button>
+        <button @click="showFinishTask">查看完成任务</button>
+    </div>
+    <span class="message" v-if="computeUnfinishTasks">任务状态：{{computeUnfinishTasks}}个未完成任务</span>
+
+    <div class="resultList" v-if="tmpTasks.length">
+        <!--必须绑定 id, 否则for指令不生效-->
+        <span class="resultItem" v-for="(value, i) in tmpTasks" @click="finishedTask(i)" v-bind:style="value.state ? textLine : ''">{{value.name}}</span>
+    </div>
+</div>
+
+</body>
+<script src="../js/vue.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '#main',
+        data: {
+            addContent: '',
+            tasks: [],
+            tmpTasks: [],
+            textLine: {
+                'text-decoration': 'line-through'
+            }
+        },
+        computed: {
+            computeUnfinishTasks:function () {
+                return this.tasks.filter(e => !e.state).length;
+            }
+        },
+        methods: {
+            addTask: function () {
+                if (this.addContent) {
+                    this.tasks.push({'name': this.addContent, 'state': false});
+                    this.addContent = '';
+                    this.tmpTasks = [];
+                    alert('添加成功');
+                } else {
+                    alert("内容不能为空");
+                }
+            },
+            showAllTask: function () {
+                this.tmpTasks = [];
+                this.tmpTasks = this.tasks;
+            },
+            finishedTask: function (position) {
+                this.tmpTasks[position].state = !this.tmpTasks[position].state;
+            },
+            showFinishTask: function () {
+                this.tmpTasks = [];
+                this.tmpTasks = this.tasks.filter(e => e.state);
+            },
+            showUnfinishedTask: function () {
+                this.tmpTasks = [];
+                this.tmpTasks = this.tasks.filter(e => !e.state);
+            }
+        }
+    });
+</script>
+</html>
